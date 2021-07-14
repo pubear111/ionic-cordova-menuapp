@@ -1,0 +1,122 @@
+<ion-header>
+  <ion-navbar [style.background-color]="'#'+restaurant?.app_color">
+    <button ion-button menuToggle end>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+			<a href="#" class="logo" *ngIf="restaurant"><img src="http://menu.diamonderbil.com/restaurants-logos/{{restaurant.logo}}" alt=""></a>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding no-bounce>
+ <h3 text-center padding>{{ 'LEAVE_REVIEW' | translate }}</h3>
+ <form  #f="ngForm" (ngSubmit)="onSubmitFeedback(f)">
+ <div padding-horizontal>
+ 	<ion-grid padding-horizontal>
+
+ 		<ion-row>
+ 			<ion-col col-3>
+ 				<ion-list no-lines margin-bottom>
+ 					<ion-item>
+					  <ion-label>{{ 'MALE' | translate }}</ion-label>
+					  <ion-radio [(checked)]="feedback.gender == maleLabel" value="male" name="gender" (click)="feedback.gender = 'male'"></ion-radio>
+					</ion-item>
+ 				</ion-list>
+ 			</ion-col>
+ 			<ion-col col-3>
+ 				<ion-list no-lines margin-bottom>
+ 					<ion-item>
+					  <ion-label>{{ 'FEMALE' | translate }}</ion-label>
+					  <ion-radio [(checked)]="feedback.gender == femaleLabel" value="female" name="gender" (click)="feedback.gender = 'female'"></ion-radio>
+					</ion-item>
+ 				</ion-list>
+ 			</ion-col>
+ 		</ion-row>
+
+ 		<ion-row>
+ 			<ion-col>
+ 				<ion-list no-lines class="feedback-inputs">
+					<ion-item margin-bottom [class.arabic]="language !== 'en'">
+						<ion-label stacked>{{ 'FULL_NAME' | translate }}</ion-label>
+						<ion-input [(ngModel)]="feedback.full_name" name="name"></ion-input>
+					</ion-item>
+					<ion-item margin-bottom [class.arabic]="language !== 'en'">
+						<ion-label stacked>{{ 'PHONE_NUMBER' | translate }}</ion-label>
+						<ion-input [(ngModel)]="feedback.phone" name="phone"></ion-input>
+					</ion-item>
+					<ion-item margin-bottom [class.arabic]="language !== 'en'">
+						<ion-label stacked>{{ 'EMAIL' | translate }}</ion-label>
+						<ion-input [(ngModel)]="feedback.email" name="email" type="email"></ion-input>
+					</ion-item>
+				</ion-list>
+ 			</ion-col>
+ 		</ion-row>
+
+ 		<p>Please rate the item based on the following criteria:</p>
+
+		<div class="interval-questions">
+			<h5 [class.arabic]="language !== 'en'">{{ 'TASTE' | translate }}</h5>
+			<ion-list radio-group no-lines no-margin [(ngModel)]="feedback.taste" name="taste">
+				<ion-item 
+					*ngFor="let option of satisfactoryOptions" 
+					text-center 
+				>
+					<ion-radio [value]="option.value"></ion-radio>
+					<ion-label>{{option.label}}</ion-label>
+				</ion-item>
+			</ion-list>
+
+			<h5 [class.arabic]="language !== 'en'">{{ 'ATMOSPHERE' | translate }}</h5>
+			<ion-list radio-group no-lines no-margin [(ngModel)]="feedback.atmosphere" name="atmosphere">
+				<ion-item 
+					*ngFor="let option of satisfactoryOptions" 
+					text-center
+					>
+						<ion-radio [value]="option.value"></ion-radio>
+						<ion-label>{{option.label}}</ion-label>
+				</ion-item>
+			</ion-list>
+			<h5 [class.arabic]="language !== 'en'">{{ 'QUALITY' | translate }}</h5>
+			<ion-list radio-group no-lines no-margin [(ngModel)]="feedback.quality" name="quality">
+				<ion-item 
+					*ngFor="let option of satisfactoryOptions" 
+					text-center
+					>
+						<ion-radio [value]="option.value"></ion-radio>
+						<ion-label>{{option.label}}</ion-label>
+				</ion-item>
+			</ion-list>
+			<h5 [class.arabic]="language !== 'en'">{{ 'OVERALL_SATISFACTION' | translate }}</h5>
+			<ion-list radio-group no-lines no-margin [(ngModel)]="feedback.overall_satisfaction" name="overall_satisfaction">
+				<ion-item 
+					*ngFor="let option of satisfactoryOptions" 
+					text-center
+					>
+						<ion-radio [value]="option.value"></ion-radio>
+						<ion-label>{{option.label}}</ion-label>
+				</ion-item>
+			</ion-list>
+		</div>
+
+		<ion-list no-lines class="feedback-inputs">
+			<ion-item [class.arabic]="language !== 'en'">
+				<ion-label stacked>{{ 'ADDITIONAL_COMMENTS' | translate }}</ion-label>
+				<ion-textarea [(ngModel)]="feedback.comment" rows="5" name="comment"></ion-textarea>
+			</ion-item>
+		</ion-list>
+		
+		<ion-row>
+			<ion-col></ion-col>
+			<ion-col>
+				<button ion-button full text-uppercase>{{ 'SUBMIT' | translate }}</button>
+			</ion-col>
+			<ion-col></ion-col>
+		</ion-row>
+
+ 	</ion-grid>
+
+ </div>
+ </form>
+</ion-content>

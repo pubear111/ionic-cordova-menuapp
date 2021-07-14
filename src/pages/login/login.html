@@ -1,0 +1,25 @@
+<ion-content padding no-bounce>
+	<div class="fixed-content" [style.background-color]="utils?.convertHex('21283b')"></div>
+	<div class="middle-item">
+		<form #f="ngForm" (ngSubmit)="onLogin(f)">
+			<ion-row>
+				<ion-col col-10>
+					<ion-list no-lines no-margin>
+						<ion-item>
+							<ion-input
+								placeholder="Enter restaurant code"
+								type="text"
+			          ngModel
+			          required
+			          name="code"
+							></ion-input>
+						</ion-item>
+					</ion-list>
+				</ion-col>
+				<ion-col col-2>
+					<button ion-button no-margin full color="secondary" type="submit">Enter</button>
+				</ion-col>
+			</ion-row>
+		</form>
+	</div>
+</ion-content>

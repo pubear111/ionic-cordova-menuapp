@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar hideBackButton [style.background-color]="'#'+restaurant?.app_color">
+    <button ion-button menuToggle end>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+			<a href="#" class="logo" *ngIf="restaurant"><img src="http://menu.diamonderbil.com/restaurants-logos/{{restaurant.logo}}" alt=""></a>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content no-bounce>
+	<ion-row *ngFor="let special of specials" (click)="onGoToSpecial(special)">
+		<ion-col no-padding>
+			<img src="http://menu.diamonderbil.com/special-offers-images/{{special.featured_image}}" alt="">
+		</ion-col>
+		<ion-col no-padding class="specials-description">
+			<div padding *ngIf="language == 'en'">
+				<h3 text-uppercase>{{special.title_english}}</h3>
+				<div [innerHTML]="special.description_english"></div>
+			</div>
+			<div padding *ngIf="language == 'ar'" class="arabic">
+				<h3 text-uppercase>{{special.title_arabic}}</h3>
+				<div [innerHTML]="special.description_arabic"></div>
+			</div>
+			<div padding *ngIf="language == 'ku'" class="arabic">
+				<h3 text-uppercase>{{special.title_kurdish}}</h3>
+				<div [innerHTML]="special.description_kurdish"></div>
+			</div>
+		</ion-col>
+	</ion-row>
+
+</ion-content>

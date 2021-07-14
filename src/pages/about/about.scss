@@ -1,0 +1,16 @@
+page-about {
+	
+	.content, .scroll-content{
+		background-color: color($colors, light);
+		color: color($colors, dark);
+	}
+
+	ion-slides{
+		height: auto;
+		.swiper-slide{
+			img{
+				width: 100%;
+			}
+		}
+	}
+}

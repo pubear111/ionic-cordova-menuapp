@@ -1,0 +1,86 @@
+page-feedback {
+	.content, .scroll-content{
+		background-color: color($colors, light);
+		color: color($colors, dark);
+	}
+
+	.feedback-inputs{
+		.item{
+			padding-left: 0;
+			.label{
+				font-size: 1.7rem;
+			}
+			.input{
+				border: 1px solid color($colors, gray) !important;
+				padding-left: 10px;
+			}
+		}
+	}
+
+	.interval-questions{
+		.checkbox{
+			position: relative!important;
+			left: calc(50% - 20px);
+		}
+		
+		.list{
+			.item{
+				display: inline-block;
+				width: 20%;
+				.item-inner{
+					display: block;
+					.label{
+						margin-right: 0;
+						margin-left: 0;
+					}
+				}
+
+			.radio{
+				margin: 0;
+				width: 100%;
+				.radio-icon{
+					margin: 0 auto;
+				}
+			}
+			.input-wrapper{
+				display: block!important;
+				width: 100%;
+			}
+			}
+		}
+	}
+
+
+	.radio-ios .radio-icon{
+    border-radius: 50%;
+    position: relative;
+    width: 21px;
+    height: 21px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #c8c7cc;
+    background-color: #fff;
+	}
+
+	.radio-ios .radio-checked{
+    border-color: #21283b;
+    background-color: #21283b;
+    color: #fff;
+    .radio-inner{
+    	color: #fff;
+	    left: 7px;
+	    top: 4px;
+	    position: absolute;
+	    width: 4px;
+	    height: 9px;
+	    border-width: 1px;
+	    border-top-width: 0;
+	    border-left-width: 0;
+	    border-style: solid;
+	    border-color: #fff;
+	    -webkit-transform: rotate(45deg);
+	    transform: rotate(45deg);
+    }
+	}
+
+}

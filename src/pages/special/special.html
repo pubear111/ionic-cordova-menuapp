@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar [style.background-color]="'#'+restaurant?.app_color">
+    <button ion-button menuToggle end>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+			<a href="#" class="logo" *ngIf="restaurant"><img src="http://menu.diamonderbil.com/restaurants-logos/{{restaurant.logo}}" alt=""></a>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content no-bounce>
+	<ion-slides pager>
+
+	  <ion-slide *ngFor="let image of special.images">
+	    <img src="http://menu.diamonderbil.com/special-offers-images/{{image.image}}" alt="">
+	  </ion-slide>
+	</ion-slides>
+
+	<ion-row>
+		<ion-col col-3></ion-col>
+		<ion-col col-3></ion-col>
+		<ion-col col-3></ion-col>
+		<ion-col col-3>
+			<span class="price-tag price-tag-lg">
+				<span>{{special.price}} IQD</span>
+			</span>
+		</ion-col>
+	</ion-row>
+
+	<div style="height: 40px;"></div>
+
+	<div margin-top padding *ngIf="language == 'en'">
+		<h3 text-uppercase>{{special.title_english}}</h3>
+		<div [innerHTML]="special.description_english"></div>
+	</div>
+	<div margin-top padding *ngIf="language == 'ar'" class="arabic">
+		<h3 text-uppercase>{{special.title_arabic}}</h3>
+		<div [innerHTML]="special.description_arabic"></div>
+	</div>
+	<div margin-top padding *ngIf="language == 'ku'" class="arabic">
+		<h3 text-uppercase>{{special.title_kurdish}}</h3>
+		<div [innerHTML]="special.description_kurdish"></div>
+	</div>
+
+
+</ion-content>

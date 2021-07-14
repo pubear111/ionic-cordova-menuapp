@@ -1,0 +1,36 @@
+<ion-content padding no-bounce>
+	<div class="fixed-content" [style.background-color]="utils.convertHex(restaurant?.app_color)"></div>
+
+	<ion-grid class="languages-header">
+		<ion-row>
+			<ion-col text-center>
+				<img src="http://menu.diamonderbil.com/restaurants-logos/{{restaurant?.logo}}" alt="" *ngIf="restaurant" style="max-width: 300px;">
+				<h1>Welcome to {{ restaurant?.name }}</h1>
+				<h2>Please choose the language</h2>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+	<ion-grid class="languages">
+		<ion-row>
+			<ion-col text-center *ngFor="let language of languages">
+				<button 
+					ion-button 
+					color="secondary" 
+					(click)="onSelectLanguage(language.short)"
+					[outline]="selectedLanguage !== language.short.toLowerCase()">
+						{{ language.long }}
+				</button>
+			</ion-col>
+		</ion-row>
+	
+		<ion-row>
+			<ion-col text-center>
+				<button ion-button large color="secondary" class="btn-enter" (click)="onSetLanguage()">Enter</button>
+			</ion-col>
+		</ion-row>
+
+	</ion-grid>
+
+</ion-content>
+

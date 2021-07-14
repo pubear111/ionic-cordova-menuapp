@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-navbar [style.background-color]="'#'+restaurant?.app_color">
+    <button ion-button menuToggle end>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+			<a href="#" class="logo" *ngIf="restaurant"><img src="http://menu.diamonderbil.com/restaurants-logos/{{restaurant.logo}}" alt=""></a>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-bounce>
+	<ion-grid no-padding>
+		<ion-row>
+			<ion-col no-padding no-margin>
+				<button 
+					ion-button 
+					color="light" 
+					full 
+					no-margin 
+					class="btn-filter"
+					[class.active]="activeFilter=='all'"
+					(tap)="onSelectFilter('all')">{{ 'ALL' | translate }}</button>
+			</ion-col>
+			<ion-col no-padding no-margin>
+				<button 
+					ion-button 
+					color="light" 
+					full 
+					no-margin 
+					class="btn-filter"
+					[class.active]="activeFilter=='red'"
+					(tap)="onSelectFilter('red')">{{ 'RED' | translate }}</button>
+			</ion-col>
+			<ion-col no-padding no-margin>
+				<button 
+					ion-button 
+					color="light" 
+					full 
+					no-margin 
+					class="btn-filter"
+					[class.active]="activeFilter=='white'"
+					(tap)="onSelectFilter('white')">{{ 'WHITE' | translate }}</button>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+	<ion-grid no-padding>
+		<ion-row 
+			class="row-wines"
+			(tap)="onGoToWine(product)" 
+			*ngFor="let product of filteredProducts;" 
+			>
+			<ion-col no-padding>
+				<img src="http://menu.diamonderbil.com/product-images/{{product.featured_image}}" alt="">
+			</ion-col>
+			<ion-col no-padding class="wines-description">
+				<div padding>
+
+					<h3 text-uppercase *ngIf="language == 'en'">{{ product.name_english }}</h3>
+					<div [innerHTML]="product.description_english" *ngIf="language == 'en'" class="wine-description"></div>
+
+					<h3 text-uppercase *ngIf="language == 'ar'" text-right>{{ product.name_arabic }}</h3>
+					<div [innerHTML]="product.description_arabic" text-right *ngIf="language == 'ar'" class="wine-description"></div>
+
+					<h3 text-uppercase *ngIf="language == 'ku'" text-right>{{ product.name_kurdish }}</h3>
+					<div [innerHTML]="product.description_kurdish" text-right *ngIf="language == 'ku'" class="wine-description"></div>
+
+				</div>
+				<div class="wine-price">
+					<h3>{{ product.item_price }} IQD <span class="unit">{{ 'GLASS' | translate }}</span></h3>
+					<h3>{{ product.price }} IQD <span class="unit">{{ 'BOTTLE' | translate }}</span></h3>
+					<span class="price-tag">
+						<span text-uppercase>{{ 'BEST_PRICE' | translate }}</span>
+					</span>
+				</div>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+</ion-content>

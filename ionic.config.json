@@ -1,0 +1,8 @@
+{
+  "name": "stella",
+  "app_id": "0dd62180",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-navbar [style.background-color]="'#'+restaurant?.app_color">
+    <button ion-button menuToggle end>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+			<a href="#" class="logo" *ngIf="restaurant"><img src="http://menu.diamonderbil.com/restaurants-logos/{{restaurant.logo}}" alt=""></a>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content no-bounce>
+	<div class="slides-wrapper">
+		<ion-slides pager>
+		  <ion-slide *ngFor="let image of product.images">
+		    <img src="http://menu.diamonderbil.com/product-images/{{image.image}}" alt="">
+		  </ion-slide>
+		</ion-slides>
+		<button ion-button clear (tap)="onLike()" class="like-btn">
+			<ion-icon name="heart"></ion-icon>
+		</button>
+		<span class="likes-count">{{ product.likes }}</span>
+	</div>
+
+	<ion-row>
+		<ion-col col-3></ion-col>
+		<ion-col col-3></ion-col>
+		<ion-col col-3></ion-col>
+		<ion-col col-3>
+			<span class="price-tag price-tag-lg">
+				<span text-uppercase>{{ 'BEST_PRICE' | translate }}</span>
+			</span>
+		</ion-col>
+	</ion-row>
+
+	<div padding></div>
+	<div padding margin-top>
+		<h3 text-uppercase *ngIf="language == 'en'"> {{product.name_english}}</h3>
+		<h3 text-uppercase text-right *ngIf="language == 'ar'"> {{product.name_arabic}}</h3>
+		<h3 text-uppercase text-right *ngIf="language == 'ku'"> {{product.name_kurdish}}</h3>
+
+		<div *ngIf="language == 'en'" [innerHTML]="product.description_english"></div>
+		<div text-right *ngIf="language == 'ar'" [innerHTML]="product.description_arabic"></div>
+		<div text-right *ngIf="language == 'ku'" [innerHTML]="product.description_kurdish"></div>
+
+		<div class="wine-price">
+			<h2 no-margin>{{ product.item_price }} IQD <span class="unit">{{ 'GLASS' | translate }}</span></h2>
+			<h2 no-margin>{{ product.price }} IQD <span class="unit">{{ 'BOTTLE' | translate }}</span></h2>
+		</div>
+
+	</div>
+
+</ion-content>

@@ -1,0 +1,16 @@
+page-contact {
+	.content, .scroll-content{
+		background-color: color($colors, light);
+		color: color($colors, dark);
+	}
+
+	.contact-form{
+		.list{
+			margin-bottom: 20px;
+		}
+		.item{
+			border: 1px solid #ddd!important;
+		}
+	}
+
+}

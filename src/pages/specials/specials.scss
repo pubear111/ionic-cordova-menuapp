@@ -1,0 +1,26 @@
+page-specials {
+	.content{
+		background-image: url('../assets/img/categories-bg.jpg');
+	}
+
+	.row:nth-child(even){
+		.col:last-child{
+			order: 1;
+		}
+
+		.col:first-child{
+			order: 2;
+		}
+	}
+
+	.specials-description{
+		background-color: color($colors, light);
+		color: color($colors, primary);
+		max-height: 216px;
+		div{
+			height: calc(100% - 20px);
+			overflow: hidden;
+		}
+	}
+
+}

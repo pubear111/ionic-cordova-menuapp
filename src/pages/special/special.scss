@@ -1,0 +1,23 @@
+page-special {
+	.content, .scroll-content{
+		background-color: color($colors, light);
+		color: color($colors, dark);
+	}
+
+	ion-slides{
+		height: auto;
+		.swiper-slide{
+			img{
+				width: 100%;
+			}
+		}
+	}
+
+	.price-tag{
+		color: color($colors, light);
+		position: absolute;
+		top: -47px;
+		left: calc(50% - 47px);
+		z-index: 2;
+	}
+}

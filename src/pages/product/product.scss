@@ -1,0 +1,67 @@
+page-product {
+
+	.content, .scroll-content{
+		background-color: color($colors, light);
+		color: color($colors, dark);
+	}
+
+	ion-slides{
+		height: auto;
+		.swiper-slide{
+			img{
+				width: 100%;
+			}
+		}
+	}
+
+	.tab-buttons{
+		position: relative;
+		top: -5px;
+	}
+
+	.price-tag{
+		color: color($colors, light);
+		position: absolute;
+		top: -47px;
+		left: calc(50% - 47px);
+		z-index: 2;
+	}
+
+	form{
+		.stars{
+			ion-icon{
+				font-size: 5rem;
+			}
+		}
+	}
+
+	.price-tag{
+		position: absolute;
+		right: 25px;
+		bottom: -10px;
+		z-index: 2;
+		font-size: 1.5rem;
+		&.left{
+			left: 25px;
+			right: auto;
+		}
+	}
+
+	.related-products{
+		position: fixed;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: 2;
+	}
+
+	.card-content{
+		color: #fff;
+		text-align: left;
+	}
+
+	.custom-tab{
+		padding-bottom: 250px!important;
+	}
+
+}

@@ -1,0 +1,182 @@
+<ion-header>
+  <ion-navbar [style.background-color]="'#'+restaurant?.app_color">
+    <button ion-button menuToggle end>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+			<a href="#" class="logo" *ngIf="restaurant"><img src="http://menu.diamonderbil.com/restaurants-logos/{{restaurant.logo}}" alt=""></a>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content no-bounce id="productContent">
+	<div class="slides-wrapper">
+		<ion-slides pager>
+		  <ion-slide *ngFor="let image of product.images">
+		    <img src="http://menu.diamonderbil.com/product-images/{{image.image}}" alt="">
+		  </ion-slide>
+		</ion-slides>
+		<button ion-button clear (tap)="onLike()" class="like-btn">
+			<ion-icon name="heart"></ion-icon>
+		</button>
+		<span class="likes-count">{{ product.likes }}</span>
+	</div>
+	<ion-row>
+		<ion-col col-9 no-padding>
+			<ion-row class="tab-buttons">
+				<ion-col col-6 no-padding>
+					<button 
+						ion-button 
+						full 
+						no-margin 
+						color="light" 
+						class="btn-tab"
+						[class.active]="activeTab == 'description'"
+						[class.arabic]="language !== 'en'"
+						(tap)="onShowTab('description')"
+						>{{ 'DESCRIPTION' | translate }}</button>
+				</ion-col>
+				<ion-col col-6 no-padding>
+					<button 
+						ion-button 
+						full 
+						no-margin 
+						color="light" 
+						class="btn-tab"
+						[class.active]="activeTab == 'reviews'"
+						[class.arabic]="language !== 'en'"
+						(tap)="onShowTab('reviews')"
+						>{{ 'REVIEWS' | translate }}</button>
+				</ion-col>
+			</ion-row>
+		</ion-col>
+		<ion-col col-3>
+			<span class="price-tag price-tag-lg">
+				<span>{{ product.price }} IQD</span>
+			</span>
+		</ion-col>
+	</ion-row>
+
+
+	<!-- Product Description Tab -->
+	<div margin-top padding *ngIf="activeTab == 'description'" class="custom-tab">
+		<h3 text-uppercase *ngIf="language == 'en'">{{ product.name_english }}</h3>
+		<h3 text-uppercase text-right *ngIf="language == 'ar'">{{ product.name_arabic }}</h3>
+		<h3 text-uppercase text-right *ngIf="language == 'ku'">{{ product.name_kurdish }}</h3>
+
+		<div *ngIf="language == 'en'" [innerHTML]="product.description_english"></div>
+		<div *ngIf="language == 'ar'" text-right [innerHTML]="product.description_arabic"></div>
+		<div *ngIf="language == 'ku'" text-right [innerHTML]="product.description_kurdish"></div>
+
+	</div>
+
+	<!-- Reviews Tab -->
+	<div margin-top padding *ngIf="activeTab == 'reviews'" class="custom-tab">
+		<h4 text-uppercase class="heading-black">{{ 'COSTUMER_REVIEWS' | translate }}</h4>
+	
+		<ion-row>
+
+			<ion-col col-8 padding-right>
+
+				<p *ngIf="!product.reviews?.length">This product has not been reviewed yet.</p>
+				
+				<div 
+					class="review"
+					margin-bottom
+					margin-right
+					padding
+					*ngFor="let review of product.reviews">
+
+						<h4 text-uppercase>{{ review.reviewer_first_name + ' ' + review.reviewer_last_name }}</h4>
+						<div class="stars">
+							<span *ngFor="let i of [1,2,3,4,5]">
+								<ion-icon name="star" *ngIf="i <= review.rating"></ion-icon>
+								<ion-icon name="star-outline" *ngIf="i > review.rating"></ion-icon>						
+							</span>
+						</div>
+						<div>{{ review.review_content }}</div>
+				</div>
+
+			</ion-col>
+
+
+			<ion-col col-4>
+	
+				<form #f="ngForm" (ngSubmit)="onSubmitReview(f)">
+
+					<div class="stars" margin-bottom>
+						<span *ngFor="let i of [1,2,3,4,5]" (click)="formReview.rating = i;">
+							<ion-icon name="star" *ngIf="i <= formReview.rating"></ion-icon>
+							<ion-icon name="star-outline" *ngIf="i > formReview.rating"></ion-icon>						
+						</span>
+					</div>
+
+					<ion-list no-lines no-margin class="form-bordered">
+						<ion-item margin-bottom>
+							<ion-input 
+								[(ngModel)]="formReview.reviewer_first_name"
+								name="reviewer_first_name"
+								placeholder="{{ 'FIRST_NAME' | translate }}"
+								[class.arabic]="language !== 'en'"
+								type="text">		
+							</ion-input>
+						</ion-item>
+						<ion-item margin-bottom>
+							<ion-input 
+								[(ngModel)]="formReview.reviewer_last_name"
+								name="reviewer_last_name"
+								placeholder="{{ 'LAST_NAME' | translate }}"
+								[class.arabic]="language !== 'en'"
+								type="text">		
+							</ion-input>
+						</ion-item>
+						<ion-item margin-bottom>
+							<ion-textarea
+								[(ngModel)]="formReview.review_content"
+								name="review_content"
+								placeholder="{{ 'DESCRIPTION' | translate }}" 
+								[class.arabic]="language !== 'en'"
+								rows="4">		
+							</ion-textarea>
+						</ion-item>
+					</ion-list>
+
+					<div padding-horizontal>
+						<button 
+							full
+							text-uppercase
+							[class.arabic]="language !== 'en'"
+							type="submit" 
+							ion-button>
+								{{ 'POST_REVIEW' | translate }}
+						</button>
+					</div>
+
+				</form>
+
+			</ion-col>
+		</ion-row>
+
+	</div>
+
+	<div class="related-products" id="related">
+		<ion-slides slidesPerView="3">
+			<ion-slide *ngFor="let productItem of relatedProducts">
+				<ion-card no-margin full (tap)="changeProduct(productItem)">
+					<img src="http://menu.diamonderbil.com/product-images/{{productItem.featured_image}}"/>
+					<ion-card-content 
+						*ngIf="gradientbg" 
+						[class.arabic]="language!=='en'"
+						[style.background]="gradientbg"
+						[class.arabic]="language !== 'en'">
+						<span *ngIf="language=='en'">{{ productItem.name_english }}</span>
+						<span *ngIf="language=='ar'">{{ productItem.name_arabic }}</span>
+						<span *ngIf="language=='ku'">{{ productItem.name_kurdish }}</span>
+					</ion-card-content>
+				</ion-card>
+			</ion-slide>
+		</ion-slides>
+	</div>
+
+</ion-content>

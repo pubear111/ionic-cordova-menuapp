@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar [style.background-color]="'#'+restaurant?.app_color">
+    <button ion-button menuToggle end>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+			<a href="#" class="logo" *ngIf="restaurant"><img src="http://menu.diamonderbil.com/restaurants-logos/{{restaurant.logo}}" alt=""></a>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content no-bounce>
+	<ion-grid class="grid-products" no-padding>
+		<ion-row>
+			<ion-col col-6 no-padding *ngFor="let product of products">
+				<ion-card no-margin full (tap)="onGoToProduct(product)">
+					<img src="http://menu.diamonderbil.com/product-images/{{product.featured_image}}"/>
+					<ion-card-content 
+						*ngIf="gradientbg" 
+						[style.background]="gradientbg"
+						[class.arabic]="language !== 'en'">
+						<span *ngIf="language=='en'">{{ product.name_english }}</span>
+						<span *ngIf="language=='ar'">{{ product.name_arabic }}</span>
+						<span *ngIf="language=='ku'">{{ product.name_kurdish }}</span>
+						<span class="price-tag" [class.left]="language !== 'en' "> 
+							<span>{{ product.price }} IQD</span>
+						</span>
+					</ion-card-content>
+				</ion-card>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+</ion-content>

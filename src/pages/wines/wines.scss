@@ -1,0 +1,68 @@
+page-wines {
+	.content{
+		background-image: url('../assets/img/categories-bg.jpg');
+	}
+
+	.hidden{
+		display: none;
+	}
+
+	.row-wines:nth-of-type(odd){
+		.col:last-child{
+			order: 1;
+		}
+
+		.col:first-child{
+			order: 2;
+		}
+	}
+
+	.row-wines{
+		// margin-top: -5px;
+		
+		&:first-child{
+			margin-top: 0;
+		}
+	}
+
+	.wines-description{
+		color: color($colors, primary);
+		>div{
+			position: relative;
+			background-color: color($colors, light);
+			div.wine-description{
+				max-height: 8rem;
+				overflow: hidden;
+			}
+			p{
+				font-style: italic;
+				font-size: 1.7rem;
+				color: #575757;
+			}
+		}
+		div.wine-price{
+			position: relative;
+			max-height: 72px;
+			width: 100%;
+			background-color: color($colors, primary);
+			color: color($colors, light);
+			padding: 10px 20px;
+			h3{
+				margin: 0;
+			}
+			.unit{
+				font-size: 14px;
+				font-weight: 300;
+				font-style: italic;
+			}
+
+			.price-tag{
+		    position: absolute;
+		    top: -28px;
+		    right: 30px;
+			}
+
+		}
+	}
+
+}

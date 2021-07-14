@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar hideBackButton [style.background-color]="'#'+restaurant?.app_color">
+    <button ion-button menuToggle end>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+			<a href="#" class="logo" *ngIf="restaurant"><img src="http://menu.diamonderbil.com/restaurants-logos/{{restaurant.logo}}" alt=""></a>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding no-bounce>
+	<ion-grid class="categories-list">
+		<ion-row>
+			<ion-col col-4 text-center *ngFor="let category of categories">
+				<button
+					ion-button
+					clear
+					class="category-btn"
+					no-margin
+				 	(tap)="onSelectCategory(category)">
+					<span 
+						class="menu-icon"
+						[class.active]="selectedCategory == category" 
+						>
+						<span>
+							<img src="http://menu.diamonderbil.com/category-icons/{{category.icon}}" alt="">
+						</span>
+					</span>
+				</button>
+				<h3 class="category-title">
+					<span *ngIf="language == 'en'">{{ category.name_english }}</span>
+					<span *ngIf="language == 'ar'">{{ category.name_arabic }}</span>
+					<span *ngIf="language == 'ku'">{{ category.name_kurdish }}</span>
+				</h3>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-content>

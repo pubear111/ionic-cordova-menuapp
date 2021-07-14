@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar [style.background-color]="'#'+restaurant?.app_color">
+    <button ion-button menuToggle end>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+			<a href="#" class="logo" *ngIf="restaurant"><img src="http://menu.diamonderbil.com/restaurants-logos/{{restaurant.logo}}" alt=""></a>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content no-bounce>
+	<ion-slides pager>
+
+	  <ion-slide *ngFor="let image of restaurant.images">
+	    <img src="http://menu.diamonderbil.com/restaurant-images/{{image.image}}" alt="">
+	  </ion-slide>
+	</ion-slides>
+
+	<div padding>
+		<h3 text-uppercase>About Us</h3>
+		<div [innerHTML]="restaurant?.about"></div>
+	</div>
+</ion-content>

@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar [style.background-color]="'#'+restaurant?.app_color">
+    <button ion-button menuToggle end>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+			<a href="#" class="logo" *ngIf="restaurant"><img src="http://menu.diamonderbil.com/restaurants-logos/{{restaurant.logo}}" alt=""></a>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding no-bounce>
+	<div class="fixed-content" [style.background-color]="utils?.convertHex(restaurant?.app_color)"></div>
+	<div class="middle-item">
+		<form #f="ngForm" (ngSubmit)="onlogout(f)">
+			<ion-row>
+				<ion-col col-10>
+					<ion-list no-lines no-margin>
+						<ion-item>
+							<ion-input
+								placeholder="Enter restaurant code"
+								type="text"
+			          ngModel
+			          required
+			          name="code"
+							></ion-input>
+						</ion-item>
+					</ion-list>
+				</ion-col>
+				<ion-col col-2>
+					<button ion-button no-margin full color="secondary" type="submit">Logout</button>
+				</ion-col>
+			</ion-row>
+		</form>
+	</div>
+</ion-content>

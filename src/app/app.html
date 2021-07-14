@@ -1,0 +1,27 @@
+<ion-menu [content]="content" side="right" [style.background]="'#'+restaurant?.app_color" persistent="true">
+  <ion-header>
+    <ion-toolbar [style.background]="'#'+restaurant?.app_color">
+      <ion-title>{{ menuTitle }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content [style.background]="'#'+restaurant?.app_color">
+    <ion-list>
+      <button 
+        menuClose 
+        ion-item 
+        color="primary"
+        [style.background-color]="utils.convertHex(restaurant?.app_color)"
+        [style.border-color]="utils.convertHex(restaurant?.app_color, '.7')"
+        detail-none
+        [class.arabic]="translate.currentLang !== 'en'"
+        *ngFor="let p of pages" (click)="openPage(p)">
+        {{p.title}}
+      </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

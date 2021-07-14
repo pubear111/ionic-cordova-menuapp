@@ -1,0 +1,279 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+body{
+	
+}
+
+.content{
+	font-family: 'Roboto';
+	background-repeat: no-repeat;
+	background-size: cover;
+	color: color($colors, light);
+	// .fixed-content{
+	// 	position: fixed;
+	// }	
+}
+
+.toolbar-ios{
+	height: 100px;
+	padding: 10px 4px;
+	background-color: color($colors, primary);
+	
+	.toolbar-background-ios{
+		background-color: transparent;
+	}
+
+	.title, button{
+		transition-duration: 0ms;
+		opacity: 1!important;
+		transform: none!important;
+	}
+
+	.toolbar-title-ios{
+		color: color($colors, light);
+	}
+
+	.bar-button-default-ios, .bar-button-default.bar-button-ios-default, .bar-button-clear-ios-default{
+		color: color($colors, light);
+	}
+	
+	.logo{
+		display: block;
+		height: 80px;
+		// margin-top: 10px;
+		img{
+			height: 80px;
+		}
+	}
+
+}
+
+.bar-button-ios{
+	height: 40px;
+}
+
+ion-menu{
+	.menu-inner{
+		.content{
+			background: color($colors, primary);
+
+			.list{
+				.item{
+					border-top: 1px solid #192032; 
+					
+					.item-inner{
+						border: 0;
+					}
+					
+					&:last-child{
+						border-bottom: 1px solid #192032;
+					}
+
+				}
+			}
+
+		}
+	}
+}
+
+.back-button-icon{
+	font-size: 4.5rem;
+}
+
+.card[full]{
+	width: 100%;
+	position: relative;
+	border-radius: 0;
+	overflow: visible;
+	.card-content{
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background: rgba(34, 40, 59, 1); /* For browsers that do not support gradients */
+	  background: -webkit-linear-gradient(left, rgba(34, 40, 59, 1) , rgba(34, 40, 59, .1)); /* For Safari 5.1 to 6.0 */
+	  background: -o-linear-gradient(right, rgba(34, 40, 59, 1), rgba(34, 40, 59, .1)); /* For Opera 11.1 to 12.0 */
+	  background: -moz-linear-gradient(right, rgba(34, 40, 59, 1), rgba(34, 40, 59, .1)); /* For Firefox 3.6 to 15 */
+	  background: linear-gradient(to right, rgba(34, 40, 59, 1) , rgba(34, 40, 59, .1)); /* Standard syntax */
+	}
+}
+
+.price-tag{
+	display: inline-block;
+	width: 55px;
+	height: 55px;
+	transform: rotate(45deg);
+	display: table;
+	margin: auto;
+	border-radius: 10px;
+	position: relative;
+	background-color: rgba(247, 148, 29, .8);
+
+	&:before, &:after{
+		content: "";
+		display: inline-block;
+		position: absolute;
+	}
+
+	&:before{
+		top: -4px;
+		left: -4px;
+		border: 1px solid rgba(247, 148, 29, .6);
+		width: 61px;
+		height: 61px;
+		border-radius: 15px;
+	}
+
+	&:after{
+		display: inline-block;
+		top: -8px;
+		left: -8px;
+		border: 1px solid rgba(247, 148, 29, .3);
+		width: 69px;
+		height: 69px;
+		border-radius: 20px;
+	}
+
+	span{
+		display: table-cell;
+	  text-align: center;
+	  vertical-align: middle;
+		transform: rotate(-45deg);
+	}
+
+	&.price-tag-lg{
+		width: 85px;
+		height: 85px;
+		font-size: 2rem;
+		&:before{
+			top: -6px;
+			left: -6px;
+			width: 95px;
+			height: 95px;
+			border-radius: 15px;
+		}
+
+		&:after{
+			top: -11px;
+			left: -11px;
+			width: 105px;
+			height: 105px;
+			border-radius: 20px;
+		}
+	}
+
+}
+
+.tab-buttons{
+	.col{
+		.btn-tab{
+			border: 1px solid color($colors, gray);
+			&.active{
+				background-color: #d7d7d7;
+			}
+		}
+		&:not(:last-child){
+			.btn-tab{
+				border-right: 0;
+			}
+		}
+	}
+}
+
+.heading-black{
+	background-color: color($colors, dark);
+	color: color($colors, light);
+	padding: 7px 20px;
+	font-weight: 400;
+	display: inline-block;
+}
+
+.form-bordered{
+	.item{
+		border: 1px solid color($colors, gray) !important;
+	}
+}
+
+.review{
+	border: 1px solid color($colors, gray);
+	h4{
+		margin-bottom: 0;
+	}
+}
+
+.stars{
+	ion-icon{
+		font-size: 2.5rem;
+	}
+	
+	.ion-ios-star{
+		color: color($colors, yellow);
+	}
+}
+
+.btn-filter{
+	border: 1px solid color($colors, gray);
+	text-transform: capitalize;
+	&.active{
+		background-color: #e0e0e0; 
+	}
+}
+
+.slides-wrapper{
+	position: relative;
+}
+
+.like-btn{
+	position: absolute;
+	z-index: 99;
+	bottom: 30px;
+	left: 30px;
+	padding: 0;
+	margin: 0;
+	.icon{
+		font-size: 5rem;
+		color: #e84b4b;
+	}
+}
+
+.likes-count{
+	position: absolute;
+	width: 43px;
+	height: 43px;
+	bottom: 30px;
+	left: 30px;
+	z-index: 100;
+	color: #fff;
+	font-size: 1.4rem;
+	text-align: center;
+	padding-top: 10px;
+	pointer-events: none;
+}
+
+.arabic{
+	text-align: right!important;
+	input, textarea{
+		text-align: right!important;
+	}
+}
+
+button.arabic{
+	span{
+		justify-content: flex-end;
+	}
+}

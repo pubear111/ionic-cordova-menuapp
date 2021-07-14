@@ -1,0 +1,35 @@
+page-languages {
+	.content{
+		background-image: url('../assets/img/languages-bg.jpg');
+
+		.languages-header{
+			margin-top: 150px;
+		}
+
+		h1{
+			margin-top: 100px;
+			color: color($colors, yellow);
+			font-weight: bold;
+		}
+
+		h2{
+			color: color($colors, light);
+			letter-spacing: 1px;
+		}
+
+		.languages{
+			margin-top: 50px;
+			width: 60%;
+			@media(max-width: 767px){
+				width: 100%;
+			}
+		}
+
+		.btn-enter{
+			margin-top: 50px;
+			padding-left: 50px;
+			padding-right: 50px;
+		}
+
+	}
+}
